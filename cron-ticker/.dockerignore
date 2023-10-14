@@ -1,0 +1,10 @@
+node_modules/
+
+dockerfile
+
+package-lock.json
+
+.git
+.gitignore
+.dockerignore
+.sh

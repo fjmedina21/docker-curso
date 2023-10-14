@@ -1,0 +1,26 @@
+# STAGE 1
+FROM node:19.2-alpine3.16 as dependecies
+WORKDIR /app
+COPY package.json ./
+RUN npm install
+
+# STAGE 2
+FROM node:19.2-alpine3.16 as testing
+WORKDIR /app
+COPY --from=Dependecies /app/node_modules ./node_modules
+COPY . .
+RUN npm run test
+
+# STAGE 3
+FROM node:19.2-alpine3.16 as prod-dependecies
+WORKDIR /app
+COPY package.json ./
+RUN npm install --prod
+
+# STAGE 4
+FROM node:19.2-alpine3.16 as runner
+WORKDIR /app
+COPY --from=prod-dependecies /app/node_modules ./node_modules
+COPY app.js ./
+COPY tasks/ ./tasks
+CMD [ "node", "app.js" ]
