@@ -10,7 +10,7 @@ services:
       target: ${STAGE}
       dockerfile: Dockerfile
 
-    image: fjmedina21/teslo-app-backend
+    image: fjmedina21/teslo-shop:1.0.0
     container_name: nest-app
     ports:
       - ${PORT}:${PORT}
@@ -30,7 +30,7 @@ services:
     image: postgres:14.3
     restart: always
     ports:
-      - "5434:5432"
+      - "${DB_PORT}:${DB_PORT}"
     environment:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_NAME}
