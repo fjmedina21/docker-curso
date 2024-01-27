@@ -23,3 +23,8 @@
 Ejecutar este comando
 
 ```docker compose -f docker-compose.prod.yml build```
+
+```docker buildx b \
+--platform linux/amd64,linux/arm64 \
+-t fjmedina21/teslo-shop \
+--push . ```
