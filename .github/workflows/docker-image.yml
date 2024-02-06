@@ -28,10 +28,12 @@ jobs:
     - name: build docker image
       run:  |
         docker build -t fjmedina21/docker-graphql:0.0.2 .
+        docker build -t fjmedina21/docker-graphql .
     
     - name: push docker image
       run:  |
         docker push fjmedina21/docker-graphql:0.0.2 
+        docker push fjmedina21/docker-graphql
         
     # - name: Build the Docker image
       # run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
