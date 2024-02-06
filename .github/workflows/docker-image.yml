@@ -27,7 +27,7 @@ jobs:
 
     - name: build docker image
       run:  |
-        docker buildx b --platform linux/amd64,linux/arm64 -t fjmedina21/docker-graphql:0.0.2 .
+        docker build -t fjmedina21/docker-graphql:0.0.2 .
     
     - name: push docker image
       run:  |
